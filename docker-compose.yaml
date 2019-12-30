@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  app:
+    image: xlash123/whizzball-reborn
+    ports:
+      - "80:5000"
+    networks:
+      - default
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - default
+
+volumes:
+  mongo-data:
+
+networks:
+  default:

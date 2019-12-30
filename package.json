@@ -4,7 +4,7 @@
   "description": "A reverse engineer implementation of the Wizzball server",
   "main": "build/server.js",
   "scripts": {
-    "start-dev": "nodemon --exec babel-node api/server.js api/",
+    "start-dev": "nodemon --exec babel-node api/server.js api/ config/",
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf build/ && babel --presets es2015 -d build/ api && cp -r src/ build/"
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "config": "^3.2.4",
     "express": "^4.17.1",
     "jquery-param": "^1.0.2",
     "mongoose": "^5.8.3",
