@@ -6,7 +6,6 @@ import MapModel from '../Models/Map';
 const mapsRouter = express.Router();
 
 mapsRouter.all('/', (req, res) => {
-	console.log('/maps');
 	const { page, sort, letter, id } = req.body;
 
 	if (id !== undefined) {
@@ -39,7 +38,7 @@ mapsRouter.all('/', (req, res) => {
 				for (let i=page * 10; i<(page + 1)*10; i++) {
 					const m = maps[i];
 					if (m !== undefined) {
-						const mapXml = mapsXml.ele(`map${i}`, {
+						const mapXml = mapsXml.ele('map', {
 							id: m.puzzleId,
 							d: m.date,
 							dr: m.difficulty,
@@ -67,7 +66,7 @@ mapsRouter.all('/', (req, res) => {
 				MapModel.find({}).sort({ difficulty: 'desc' }).exec(sendMaps);
 				break;
 			case 'popularity':
-				MapModel.find({}).sort({ 'popularity.rating	': 'desc' }).exec(sendMaps);
+				MapModel.find({}).sort({ 'popularity.rating': 'desc' }).exec(sendMaps);
 				break;
 			case 'random':
 				function shuffle(array) {

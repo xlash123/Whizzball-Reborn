@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import apiRouter from './api/routes/api';
+import apiRouter from './routes/api';
 
 mongoose.connect('mongodb://localhost/whizzball', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
 	console.log('Connected to MongoDB');
@@ -15,6 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', apiRouter);
 
-app.use('/', express.static('src'));
+app.use(express.static('src'));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

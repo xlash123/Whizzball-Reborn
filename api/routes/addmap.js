@@ -9,7 +9,6 @@ const generateNewId = () => {
 }
 
 addmapRouter.all('/', (req, res) => {
-	console.log('/addmap');
 	const {
 		mapdata,
 		difficulty,
@@ -34,10 +33,10 @@ addmapRouter.all('/', (req, res) => {
 		puzzleId: generateNewId(),
 	});
 	map.save().then((m) => {
-		res.send(param({ puzzleId: m.puzzleId }));
+		res.send(param({ id: m.puzzleId }));
 	}).catch((err) => {
 		console.error('Error saving:', err);
-		res.send(param({ puzzleId: -2 }));
+		res.send(param({ id: -2 }));
 	});
 });
 

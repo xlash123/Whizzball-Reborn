@@ -5,7 +5,6 @@ import User from '../Models/User';
 const playersRouter = express.Router();
 
 playersRouter.all('/', (req, res) => {
-	console.log('/players');
 	const { name, score } = req.body;
 
 	User.findOne({ name }, (err, user) => {

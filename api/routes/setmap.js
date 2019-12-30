@@ -4,7 +4,6 @@ import MapModel from '../Models/Map';
 const setmapRouter = express.Router();
 
 setmapRouter.all('/', (req, res) => {
-	console.log('/setmap');
 	const { vote, id } = req.body;
 
 	MapModel.findOne({ puzzleId: id }, (err, map) => {
